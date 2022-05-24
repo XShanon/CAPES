@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <ol>
+        {% for article in articles %}
+        <li><button><a href="{{ article.link }}">{{ article.title }}</a></button></li>
+        {% endfor %}
+    </ol>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+    <table class="content-table">
+        <thead>
+          <tr>
+              <th>Status</th>
+            <th>Subject</th>
+            <th>To</th>
+            <th>Time</th>
+          </tr>
+        </thead>
+        <tbody>
+	  	{% for mail in mails %}
+            <tr id="clickrowmail">
+            <td>
+            {% if mail.status == "Sent" %}
+            <div title="Sent">
+            <svg  width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M25 37.5C31.9036 37.5 37.5 31.9036 37.5 25C37.5 18.0964 31.9036 12.5 25 12.5C18.0964 12.5 12.5 18.0964 12.5 25C12.5 31.9036 18.0964 37.5 25 37.5Z" fill="#42FF00"/>
+<path d="M25.4853 27.5563L20.5355 22.6066L17 26.1421L21.9497 31.0919L25.4853 27.5563Z" fill="#FFE8E8"/>
+<path d="M30.1421 18L19.5355 28.6066L23.0711 32.1421L33.6777 21.5355L30.1421 18Z" fill="#FFE8E8"/>
+</svg>
+            </div>
+            {% elif mail.status == "Scheduled" %}
+            <div title="Scheduled">
+                <svg width="50" height="50" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="25" fill="#FF7C02"/>
+                <rect x="37" y="45" width="25" height="10" fill="#FFE8E8"/>
+                </svg>
+            </div>
+            {% else %}
+            <div title="Untracked">
+                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M25 37.5C31.9036 37.5 37.5 31.9036 37.5 25C37.5 18.0964 31.9036 12.5 25 12.5C18.0964 12.5 12.5 18.0964 12.5 25C12.5 31.9036 18.0964 37.5 25 37.5Z" fill="#FF0000"/>
+                <path d="M28.6066 18L18 28.6066L21.5355 32.1421L32.1421 21.5355L28.6066 18Z" fill="#FFE8E8"/>
+                <path d="M32.1421 28.6066L21.5355 18L18 21.5355L28.6066 32.1421L32.1421 28.6066Z" fill="#FFE8E8"/>
+                </svg>
+            </div>
+            {% endif %}
+            </td>
+                <td onclick='location.href="{% url 'mailview' pk=mail.pk %}"'>
+            {{ mail.subject }}</td>
+		    <td >
+		        <ul class="email-ids">
+                    <select name="recipients_list" class="selectpicker" data-live-search="true">
+                        {% for mailids in mail.recipients_list %}
+                            <option value="{{ mailids }}">{{ mailids }}</option>
+                        {% endfor %}
+                    </select>
+		        </ul>
+            </td>
+		    <td>{{ mail.send_on }}</td>
+        </tr>
+	  {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}

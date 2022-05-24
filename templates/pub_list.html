@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <ul>
+        {% for publication in publications %}
+        <li><a href="/get/{{publication.name}}">{{ publication.name }}</a></li>
+    <a href="{% url 'updatefeedlink' publication.id  %}"><button>Update</button></a>
+    <a href="{% url 'deletefeedlink' publication.id  %}"><button>Delete</button></a>
+        {% endfor %}
+    </ul>
+{% endblock %}

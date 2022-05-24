@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<link href="{% static 'style.css' %}" rel="stylesheet">
+<form action="{% url 'fetchfeed' %}" method="post" id="searchfeed">
+        {% csrf_token %}
+        <div id="searchbar" type="text">
+            <input id="searchbartext" type="search" name="searchterm" placeholder="search" />
+            <button id="searchbarbutton" type="submit"class="btn btn-light">
+                <svg focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+                    </path>
+                </svg>
+            </button>
+        </div>
+    </form>
+    <h3>Search Result for "{{ searchterm }}"</h3>
+    <a href="{% url 'schedule' %}"><button class="btn btn-info">Send Mail Form</button></a>
+    <div id="searchresultsarea">
+          {% for article in articles %}
+          <div class="searchresult" class="cardbox">
+              <h2>{{ article.title }}</h2>
+              <a href="{{ article.link }}">{{ article.link|truncatechars:100 }}</a> 
+          </div>
+        {% endfor %}
+    </div>
+{% endblock %}

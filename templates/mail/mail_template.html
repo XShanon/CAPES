@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+u + #body a {
+    color: #ffc107;
+          font-size: inherit;
+    }
+        *{
+            text-align: left;
+        }
+        a,a:link, a:active{
+            color: #ffc107;
+        }
+        .list{
+            background-color: #312F2F;
+        }
+        .list >h2{
+            font-size: 40px;
+            text-align: center;
+            color: #bae8e8;
+            text-transform: capitalize;
+            text-decoration-line: underline;           
+        }
+        ol {
+            text-align: left;
+            color: white;
+            padding: 30px;
+            font-size: 20px;
+        }
+        li > a{
+        }
+        li > a:hover{
+            color: white;
+        }
+        .article-card{
+            background-color: #312F2F;
+            padding: 15px;
+            margin: 5px;
+            background: rgba( 255, 255, 255, 0.25 );
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 3px );
+            -webkit-backdrop-filter: blur( 3px );
+        }
+        </style>
+    </head>
+    <body id="body">
+        <div class="list">
+        <h2>{{ searchterm }} Articles</h2>
+        <ol>
+        {% for article in articles %}
+        <div class="article-card">
+            <li><a style="color:ffc107;"href="{{ article.link }}">{{ article.title }}</a></li>
+        </div>
+        {% endfor %}
+        </ol>
+        </div>
+
+    </body>
+</html>

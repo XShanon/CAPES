@@ -1,0 +1,324 @@
+:root {
+  --grey: #312F2F;
+  --bluet: #bae8e8;
+}
+
+body{
+    background-color:#F7F7F7;
+}
+
+nav{
+    background-color:#312F2F;
+    color: #bae8e8;
+    text-align: center;
+    padding: 20px;
+}
+.navbar{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row-reverse;
+    align-content: stretch;
+    justify-content: space-evenly;
+    text-align:center;
+}
+
+nav >h2{
+    text-align: center;
+}
+#searchfeed{
+    padding-top: 10vh;
+    padding-left: 25vw;
+    max-width: fit-content;
+}
+#searchbarbutton {
+    height: 45px;
+    width: 55px;
+    margin-right: -2px;
+    background-color: white;
+    max-width: fit-content;
+}
+
+#searchbarbutton svg {
+    height: 25px;
+    width: 35px;
+    position: relative;
+}
+
+#searchbarbutton svg path {
+    fill: #4285F4
+}
+
+#searchbar {
+    width: 625px;
+    height: 45px;
+    border-radius: 100px;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 1px;
+    font-size: 16px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    z-index: 100;
+    max-width: fit-content;
+}
+
+#searchbar:hover {
+    box-shadow: 0px 2px 5px rgba(0,0,0,0.1);
+}
+
+#searchbar > input {
+    height: 45px;
+    border-style: none;
+    font-size: 16px;
+    line-height: 45px;
+    padding-left: 20px;
+    flex: 1;
+    width: 50vw;
+}
+
+#searchbar > input:focus {
+    outline: none;
+}
+
+#searchbar button {
+    border: none;
+    cursor: pointer;
+}
+
+#searchbar button:focus {
+    outline: none;
+}
+
+#optionsmenu2 li {
+    padding: 0px 10px 15px 20px;
+}
+
+#searchresultsarea {
+    margin-left: 50px;
+    font-family: 'Arial';
+}
+
+#searchresultsnumber {
+    font-size: 0.8rem;
+    color: gray;
+}
+
+.searchresult {
+    margin-left: 8px;
+}
+
+.searchresult h2 {
+    font-size: 19px;
+    line-height: 18px;
+    font-weight: normal;
+    color: rgb(29, 1, 189);
+    margin-bottom: 0px;
+    margin-top: 25px;
+}
+
+.searchresult a {
+    font-size: 14px;
+    line-height: 14px;
+    color: green;
+    word-wrap:break-word;
+    margin-bottom: 0px;
+}
+
+.searchresult button {
+    font-size: 10px;
+    line-height: 14px;
+    color: green;
+    margin-bottom: 0px;
+    padding: 0px;
+    border-width: 0px;
+    background-color: white;
+}
+
+
+
+#optionsbar {
+    width: 100%;
+    height: 50px;
+    border-width: 0px;
+    border-bottom: 1px;
+    border-color: lightgray;
+    border-style: solid;
+    display: flex;
+    align-items: flex-end;
+    font-family: 'Arial';
+    font-size: 13px;
+    color: rgb(112, 112, 112);
+    padding-top: 64px;
+}
+
+#optionsmenu1 {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    margin: 0px;
+    margin-left: 150px;
+}
+
+#optionsmenu1 li {
+    padding: 0px 10px 15px 20px;
+}
+
+.searchresult p {
+    width: 625px;
+    font-size: 13px;
+    margin-top: 0px;
+    color: rgb(82, 82, 82);
+}
+
+.cardbox {
+    width: 100%;
+    height: 168px;
+    background: rgba(255, 248, 248, 1);
+    opacity: 1;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+#id_body{
+    display: none;
+}
+.content-section{
+    width: auto;
+    max-width: 700px;
+    margin: 50px auto;
+}
+
+#email-sender{
+    padding: 10px;
+}
+#login{
+    max-width: fit-content;
+}
+.btn-link{
+    color: #fffff3;
+    font-size: 20px;
+}
+.btn-link:hover{
+    color: #bae8e8;
+}
+#Preview{
+    display: block;
+    max-height: 300px;
+    overflow-y: auto;
+}
+.mb-3, .tab, #email-sender, #myForm, #div_id_rss_link{
+    width: auto;
+    max-width: 700px;
+    margin: 50px auto;
+    padding: 0;
+}
+.form-group{
+    width: auto;
+    max-width: 700px;
+    padding: 0;
+}
+
+.mail-view
+{
+	position:absolute;
+	left:10%;
+	width:75%;
+	font-size:30px;
+	color:black;
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 2.3em;
+	position: absolute;
+	border-radius: 5px 5px 0 0;
+	overflow: hidden;
+	padding-left:10%;
+	padding-right:10%;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.content-table {
+border-collapse: collapse;
+margin: 25px 0;
+font-size: 1.2em;
+min-width: 1300px;
+position: absolute;
+left: 25px;
+border-radius: 5px 5px 0 0;
+overflow: hidden;
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+background-color: var(--grey);
+color: #ffffff;
+text-align: left;
+font-weight: 900;
+}
+
+.content-table th,
+.content-table td {
+padding: 22px 15px;
+}
+
+.content-table tbody tr {
+border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+background-color: #f3f3f3;
+}
+
+#sub, #sub>a
+{
+	text-decoration:none;
+	font-size:110%;
+	font-weight:900;
+}
+#clickrowmail{
+    cursor: pointer;
+}
+#clickrowmail:hover{
+    background-color: #aaaaaa;
+}
+
+.list{
+    max-height: 300px;
+    overflow-y: auto;
+}
+

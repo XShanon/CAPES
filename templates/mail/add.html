@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block body %}
+{% load crispy_forms_tags %}
+{% load static %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>    
+
+   <div class="tab">
+      <button class="tablinks" onclick="editPreview(event, 'id_body')">Edit</button>
+      <button class="tablinks" onclick="editPreview(event, 'Preview')">Preview</button>
+   </div>
+<div id="sender">
+   <h3 id="email-sender">Sender: {{ request.user.email }}</h3>
+</div>
+   <form id="myForm">
+      <input type="file" id="csvFile" accept=".csv" hidden="hidden" />
+      <div class="form-row">
+        <div class="form-group col-md-2 mb-0">
+          <button type="button" id="csvfile" class="btn btn-secondary">CSV File</button>
+        </div>
+        <div class="form-group col-md-2 mb-0">
+          <div class = 'hem'>
+            <input type="submit" value="Get Mail-IDs" id='subcsv' class="btn btn-success"/>
+          </div>
+        </div>
+      </div>
+   </form>
+<div class="mb-3">
+   <form method="POST" enctype="multipart/form-data" action='.'>
+      {% csrf_token %}
+      <!-- {{ form|crispy }} -->
+<div class="form-row">
+      <div class="form-group col-md-10 mb-0">
+          {{ form.recipients_list|as_crispy_field }}
+      </div>
+    </div>
+    <div class="form-group col-md-10 mb-0">
+    {{ form.subject|as_crispy_field }}
+      </div>
+    {{ form.body|as_crispy_field }}
+
+      <div id="Preview" class="tabcontent" align="right">
+         <h2>Preview</h2>
+         <div class="mail-preview">
+            <p id="mail-content"></p>
+         </div>
+      </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+          {{ form.send_on|as_crispy_field }}
+      </div>
+      <div class="form-group col-md-6 mb-0">
+          {{ form.schedule_type|as_crispy_field }}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6 mb-0">
+      <button id="send" onclick="sendmail()" class="btn btn-primary">Send Mail</button>
+      </div>
+   </form>
+   <script>
+      const myForm = document.getElementById("myForm");
+             const csvFile = document.getElementById("csvFile");
+      
+      var customTxt = document.getElementById("id_recipients_list");
+      	myForm.addEventListener("submit", function (e) {
+      	    e.preventDefault();
+      	    const input = csvFile.files[0];
+      	    const reader = new FileReader();
+      
+      	    reader.onload = function (e) {
+      		const text = e.target.result;
+      		customTxt.value=text;
+      	    };
+      
+      	    reader.readAsText(input);
+      	});
+      const realFileBtn = document.getElementById("csvFile");
+      const customBtn = document.getElementById("csvfile");
+      
+      customBtn.addEventListener("click", function() {
+        realFileBtn.click();
+      });
+      
+      realFileBtn.addEventListener("change", function() {
+        if (realFileBtn.value) {
+          customTxt.value= realFileBtn.value.match(
+            /[\/\\]([\w\d\s\.\-\(\)]+)$/
+          )[1];
+        } else {
+          customTxt.innerHTML = "No file chosen, yet.";
+        }
+      });
+         function sendmail(){
+             alert("Are you sure you want to send mail?");
+         }
+         
+             $(document).ready(function(){
+                         $(".form-control > textarea").each(function(){
+                                     var content = $(this).text()
+                                     $(this).html(content)
+                         })
+             var contentvalue = $("#id_body")
+             $("#mail-content").html(contentvalue.val())
+      
+             function editPreview(value){
+                 var content = value
+                 $("#mail-content").html(content)
+             }
+      
+             contentvalue.keyup(function(){
+                     var newBody = $(this).val()
+                     editPreview(newBody)
+             });
+      
+             })
+      function editPreview(evt, cityName) {
+       var i, tabcontent, tablinks;
+       tabcontent = document.getElementsByClassName("tabcontent");
+       for (i = 0; i < tabcontent.length; i++) {
+         tabcontent[i].style.display = "none";
+       }
+       tablinks = document.getElementsByClassName("tablinks");
+       for (i = 0; i < tablinks.length; i++) {
+         tablinks[i].className = tablinks[i].className.replace(" active", "");
+       }
+            if(cityName == "id_body"){
+                document.getElementById("Preview").style.display = "none";           
+                document.getElementById("Preview").style
+            }
+            else{
+                document.getElementById("id_body").style.display = "none";           
+            }
+       document.getElementById(cityName).style.display = "block";
+       evt.currentTarget.className += " active";
+      }
+         
+   </script>
+</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
+{% endblock body %}
