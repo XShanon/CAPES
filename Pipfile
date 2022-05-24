@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+feedparser = "*"
+django = "*"
+python-dotenv = "*"
+python-dateutil = "*"
+psycopg2 = "*"
+bs4 = "*"
+requests = "*"
+lxml = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
